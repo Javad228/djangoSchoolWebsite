@@ -1,0 +1,10 @@
+{% extends "mainPage/base.html" %}
+{% block content %}
+    <form action="/table/" method="post" id="systemForm">
+    {% csrf_token %}
+    {% for post in posts %}
+        <button type="submit" name="system" form="systemForm" value={{ post.ClassChoice }}>{{ post.ClassChoice }}</button>
+    {% endfor %}
+    </form>
+
+{% endblock content %}

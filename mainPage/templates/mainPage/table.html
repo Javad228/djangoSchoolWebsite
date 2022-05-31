@@ -1,0 +1,8 @@
+{% extends "mainPage/base.html" %}
+{% block content %}
+{#    <h1>for {{ system }}</h1>#}
+    {% for syste in system %}
+        <h1> {{ syste.username}} </h1>
+        <p> {{ syste.first_name }} {{ syste.last_name }} </p>
+    {% endfor %}
+{% endblock content %}
