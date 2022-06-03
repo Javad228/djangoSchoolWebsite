@@ -18,11 +18,8 @@ posts = [
 ]
 
 def home(request):
-    form = Instructor.objects.first()
-    context = {
-        'posts': form.classTaught.all()
-    }
-    return render(request, 'mainPage/home.html', context)
+
+    return render(request, 'mainPage/home.html')
 
 
 def about(request):
@@ -36,3 +33,7 @@ def table(request):
     }
 
     return render(request, 'mainPage/table.html', context)
+
+
+def attendance(request, stud_id):
+    return render(request, 'mainPage/about.html')

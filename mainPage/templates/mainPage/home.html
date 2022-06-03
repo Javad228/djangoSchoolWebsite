@@ -1,10 +1,16 @@
 {% extends "mainPage/base.html" %}
 {% block content %}
-    <form action="/table/" method="post" id="systemForm">
-    {% csrf_token %}
-    {% for post in posts %}
-        <button type="submit" name="system" form="systemForm" value={{ post.ClassChoice }}>{{ post.ClassChoice }}</button>
-    {% endfor %}
-    </form>
+{#    <form action="/table/" method="post" id="systemForm">#}
+{#    {% csrf_token %}#}
+{#    {% for post in posts %}#}
+{#        <button type="submit" name="system" form="systemForm" value={{ post.ClassChoice }}>{{ post.ClassChoice }}</button>#}
+{#    {% endfor %}#}
+{#    </form>#}
+    <div>
+        <a class="btn btn-primary" role="button" href="{% url 'attendance' request.user.student.username %}"> View Attendance</a>
+    </div>
+    <div>
+{#        <a class="btn btn-primary" role="button" href="{% url 'grades' request.user.student.USN %}"> View Grades</a>#}
+    </div>
 
 {% endblock content %}
