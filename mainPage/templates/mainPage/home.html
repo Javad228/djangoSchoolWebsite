@@ -6,6 +6,7 @@
 {#        <button type="submit" name="system" form="systemForm" value={{ post.ClassChoice }}>{{ post.ClassChoice }}</button>#}
 {#    {% endfor %}#}
 {#    </form>#}
+    <h1>For Students</h1>
     <div>
         <a class="btn btn-primary" role="button" href="{% url 'attendance' request.user.student.username %}"> View Attendance</a>
     </div>

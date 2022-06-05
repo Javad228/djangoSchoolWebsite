@@ -76,6 +76,6 @@ class Attendance(models.Model):
     status = models.BooleanField(default='True')
 
     def __str__(self):
-        sname = Student.objects.get(name=self.student)
-        cname = Classes.objects.get(name=self.course)
+        sname = Student.objects.get(username=self.student.username)
+        cname = Classes.objects.get(id=self.course.id)
         return '%s : %s' % (sname.fullName, cname.id)
