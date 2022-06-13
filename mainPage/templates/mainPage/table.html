@@ -27,10 +27,12 @@
                         <td>{{ forloop.counter }}</td>
                         <td>{{ value.date }}</td>
                         <td>{{ value.date|date:"l" }}</td>
-                        {% if value.status %}
+                        {% if value.status == 0 %}
                         <td class="p-3 mb-2 bg-success text-white">Present <span class="glyphicon glyphicon-thumbs-up"></span></td>
+                        {% elif value.status == 1 %}
+                        <td class="p-3 mb-2 bg-danger text-white">Absent <span class="glyphicon glyphicon-thumbs-down"></span></td>
                         {% else %}
-                        <td class="p-3 mb-2 bg-danger text-white">Absent <span class="glyphicon glyphicon-thumbs-down"></span</td>
+                        <td class="p-3 mb-2 bg-dark text-white">Late <span class="glyphicon glyphicon-thumbs-down"></span></td>
                         {% endif %}
                     </tr>
                 {% empty %}

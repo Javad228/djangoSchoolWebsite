@@ -1,23 +1,25 @@
 from datetime import date
 
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, AbstractUser
+from django.contrib.auth.models import BaseUserManager, AbstractUser
 
 import users
 
 
-class Account(AbstractUser):
+class User(AbstractUser):
     @property
     def is_student(self):
         if hasattr(self, 'student'):
             return True
-        return False
+        else:
+            return False
 
     @property
     def is_teacher(self):
         if hasattr(self, 'teacher'):
             return True
-        return False
+        else:
+            return False
 
 
 class Classes(models.Model):
@@ -31,7 +33,7 @@ class Classes(models.Model):
 
 
 class Student(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     fullName = models.CharField(max_length=200)
     class_id = models.ForeignKey(Classes, on_delete=models.CASCADE, default=1)
     username = models.CharField(primary_key='True', max_length=100)
@@ -41,7 +43,7 @@ class Student(models.Model):
 
 
 class Instructor(models.Model):
-    user = models.OneToOneField(Account, on_delete=models.CASCADE, null=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     fullName = models.CharField(max_length=200)
     username = models.CharField(primary_key='True', max_length=100)
 
@@ -73,7 +75,7 @@ class Attendance(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     attendanceclass = models.ForeignKey(TeachesWithDate, on_delete=models.CASCADE, default=1)
     date = models.DateField(default='2018-10-23')
-    status = models.BooleanField(default='True')
+    status = models.IntegerField(default=0)
 
     def __str__(self):
         sname = Student.objects.get(username=self.student.username)

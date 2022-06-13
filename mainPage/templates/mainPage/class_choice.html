@@ -1,0 +1,35 @@
+{% extends "mainPage/base.html" %}
+{% block content %}
+    <h1>List of Classes</h1>
+    <div class="card mb-3">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+                <tr>
+                    <th>Class</th>
+                    <th>Attendance</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for ass in teacher.teaches_set.all %}
+                {% if choice == 0 %}
+                    <tr>
+                        <td>{{ ass.classes }}</td>
+                        <td><a class="btn btn-primary" href="{% url 'attendance_t' ass.id %}" role="button">Enter Attendance</a></td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>{{ ass.classes }}</td>
+                        <td><a class="btn btn-primary" href="{% url 't_edit_attendance' ass.id %}" role="button">Edit Attendance</a></td>
+                    </tr>
+                {% endif %}
+                {% empty %}
+                        <p>teacher has no courses</p>
+                {% endfor %}
+
+              </tbody>
+            </table>
+          </div>
+    </div>
+{% endblock %}

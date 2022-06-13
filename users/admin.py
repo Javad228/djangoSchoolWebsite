@@ -1,9 +1,9 @@
 from django.contrib import admin
 
 from users.models import *
+from django.contrib.auth.admin import UserAdmin
 
-
-admin.site.register(Account)
+admin.site.register(User, UserAdmin)
 admin.site.register(Classes)
 admin.site.register(Teaches)
 admin.site.register(Instructor)
